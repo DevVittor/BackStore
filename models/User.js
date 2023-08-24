@@ -40,7 +40,7 @@ const UserSchema = new mongoose.Schema({
 
 UserSchema.plugin(uniqueValidator,{ message:"Já está sendo utilizado" });
 
-UserSchema.methods.setSenha = (password)=>{
+UserSchema.methods.setPassword = (password)=>{
     this.salt = crypto.randomBytes(16).toString("hex");
     this.hash = crypto.pbkdf2Sync(password,this.salt,10000,512,"sha512").toString("hex");
 };
